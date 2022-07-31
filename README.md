@@ -1,6 +1,8 @@
 Recommendation System
-In this project building a recommendation system that recommends
-transcribed video content to all of the twitter topic categories.
+
+
+
+In this project building a recommendation system that recommends transcribed video content to all of the twitter topic categories.
 You will select 10 Twitter users (real people, not organizations) and determine which of the
 youtube transcriptions you need to feed the app for each one of them. Your recommendations will be based on their
 past retweets so select people that are very active on twitter.
