@@ -17,16 +17,14 @@ urlpatterns = [
             path('c',views.c,name='c'),
             path('cvd',views.cvd,name='cvd'),
             path('youtube',views.youtube,name='youtube'),
-           # path('TweetsView',views.TweetsViewSet,name='TweetsView')
-             path('api/', include(router.urls)),
+            path('api/', include(router.urls)),
              path('kar',views.kar,name='kar'),
              path('tesla',views.tesla,name='tesla'),
              path('tech',views.tech,name='tech'),
              path('img',views.img,name='img'),
              path('infl',views.infl,name='infl'),
              path('lake',views.lake,name='lake')
-            # path('ap', include('rest_framework.urls', namespace='ap'))  
-           # path('find_count',views.find_count,name='find_count') 
+            
          
       
      
