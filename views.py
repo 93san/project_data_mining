@@ -17,10 +17,7 @@ from django.http import JsonResponse
 import pandas as pd
 from django.shortcuts import render
 from googleapiclient.discovery import build
-
 from tweepy import OAuthHandler
-
-
 from tweepy import Cursor
 from datetime import datetime
 from django.contrib.auth.models import User
@@ -50,7 +47,6 @@ class TweetsViewSet(viewsets.ModelViewSet):
     
     serializer_class = TweetsSerializer
     permission_classes = [permissions.IsAuthenticated]
-
 
 from datetime import datetime, timedelta
 import pandas as pd
@@ -103,12 +99,7 @@ def forest(request):
               lang="en",
               since_id=date_since).items(5),'results':youtube.search().list(q="stock market ", part="snippet", type="video", order="viewCount",
                              maxResults=5).execute()}
-
-
-  
     return render(request,'example_app/news.html',context)
-
-
 def cvd(request):
 # Collect tweets
     search_words = "Covid"
@@ -121,8 +112,6 @@ def cvd(request):
     return render(request,'example_app/news.html',context)
 
 def tech(request):
- 
-  
 # Collect tweets
     search_words = "artificial intelligence"
     date_since = "2018-11-16"
@@ -135,8 +124,6 @@ def tech(request):
     return render(request,'example_app/news.html',context)
 
 def img(request):
- 
-  
 # Collect tweets
     search_words = "Immigration"
     date_since = "2018-11-16"
@@ -147,11 +134,7 @@ def img(request):
                              maxResults=5).execute()}
   
     return render(request,'example_app/news.html',context)
-
-
 def infl(request):
- 
-  
 # Collect tweets
     search_words = "Inflation"
     date_since = "2018-11-16"
@@ -162,10 +145,7 @@ def infl(request):
                              maxResults=5).execute()}
   
     return render(request,'example_app/news.html',context)
-
 def lake(request):
- 
-  
 # Collect tweets
     search_words = "Lake mead"
     date_since = "2018-11-16"
@@ -176,24 +156,6 @@ def lake(request):
                              maxResults=5).execute()}
   
     return render(request,'example_app/news.html',context)
-
-def life(request):
- 
-  
-# Collect tweets
-    search_words = "Utopia"
-    date_since = "2018-11-16"
-    context = {'tweets' : tweepy.Cursor(api.search_tweets,
-              q=search_words,
-              lang="en",
-              since_id=date_since).items(5),'results':youtube.search().list(q="stock market ", part="snippet", type="video", order="viewCount",
-                             maxResults=5).execute()}
-  
-    return render(request,'example_app/news.html',context)
-
-
-
-
 def c(request): 
 # Collect tweets
     api_key = ''
@@ -205,22 +167,7 @@ def c(request):
               lang="en",
               since_id=date_since).items(2), 'results':youtube.search().list(q="wildfire ", part="snippet", type="video", order="viewCount",
                              maxResults=1).execute()}
-    
-   # request = youtube.videos().list(
-   #     part="contentDetails",
-    #    id="v=x-alwfgQ-cY&t=922s"
-   # )
-    #response = request.execute()
-   # print(response)
-    video_ids=[]
-   # rs=results['items']
-    #for r in rs:
-     #  print(r['kind'])
-      # print(r['id']['videoId'])
-      # print(r['contentDetails']['message'])
-       
-    
-    return render(request,'example_app/hello.html',context)
+   return render(request,'example_app/hello.html',context)
 
 def youtube(request):
     youtube = build('youtube', 'v3', developerKey=api_key)
@@ -234,9 +181,7 @@ def youtube(request):
     )
     response = request.execute()
     print(response)
-   
-
-    return JsonResponse(response)
+   return JsonResponse(response)
 
 def tesla(request):
     youtube = build('youtube', 'v3', developerKey='')
@@ -248,48 +193,13 @@ def tesla(request):
       #  print(foo['snippet']['title'])
     return HttpResponse(results2)
 
-from youtube_transcript_api import YouTubeTranscriptApi
-def kar(request):
-     youtube = build('youtube', 'v3', developerKey='')
-     results3 = youtube.videos().list(id='geW09OOqieU',part="contentDetails").execute()
-     
-  
-     print(results3)
-     return HttpResponse(results3)
-
-#def like(request):
- #   
-  #  youtube = build('youtube', 'v3', developerKey='')
-   # 
-    #
-   #
-    #video_statistics = youtube.videos().list(id='v=rfscVS0vtbw',
-     #                                  part=['statistics'],maxResults=1).execute()
-
-    
-    #video_id = video_statistics['items']
-
-    
-    #likecount = int(video_statistics['items'][0]['stastics']['likeCount'])
-    #print(likecount)
-   
-
-   
- def like(request):
+def like(request):
 
     youtube = build('youtube', 'v3', developerKey='')
     
     context={'video_statistics': youtube.videos().list(id =['WluvF8Tj5tc','chZp2U09Qa8'],
                                         part='statistics').execute()}
-                    
-    #print(video_statistics['items'])
-   # rs= video_statistics['items']
-    #for r in rs:
-      #  likecount = int(r['statistics']['likeCount'])
-    #likecount = int(video_statistics['items'][1]['statistics']['likeCount'])
-   # print(likecount)
-    
-    return render(request,'example_app/fire.html',context)
+  return render(request,'example_app/fire.html',context)
 
 
 
